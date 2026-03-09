@@ -3,7 +3,7 @@
 import requests
 import json
 import logging
-from config import API_URL, RAW_PATH
+from src.config import API_URL, RAW_PATH
 
 def extract_countries():
     logging.info("Extracting data from API")

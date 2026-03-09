@@ -1,5 +1,5 @@
-from pyspark.sql.functions import col, element_at, current_date, sum
-from config import PARQUET_PATH
+from pyspark.sql.functions import col, element_at, current_date, sum, size, when
+from src.config import PARQUET_PATH
 
 
 def transform_with_spark(spark, raw_path):
@@ -13,7 +13,8 @@ def transform_with_spark(spark, raw_path):
             col("cca3").alias("country_code"),
             col("name.common").alias("country_name"),
             col("region"),
-            element_at(col("capital"), 1).alias("capital"),
+            # Safe extraction of first capital
+            when(size(col("capital")) > 0, element_at(col("capital"), 1)).otherwise(None).alias("capital"),
             col("population")
         )
         .withColumn("ingestion_date", current_date())

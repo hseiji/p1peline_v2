@@ -1,9 +1,9 @@
 import logging
-from extract import extract_countries
-from transform_spark import transform_with_spark
-from load import load_to_sqlite
-from spark_session import create_spark_session
-from data_quality import validate_dataframe
+from src.extract import extract_countries
+from src.transform_spark import transform_with_spark
+from src.load import load_to_sqlite
+from src.spark_session import create_spark_session
+from src.data_quality import validate_dataframe
 
 
 def run_pipeline(output_target):

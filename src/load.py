@@ -3,7 +3,7 @@
 import sqlite3
 import pandas as pd
 import logging
-from config import DB_PATH, TABLE_NAME
+from src.config import DB_PATH, TABLE_NAME
 
 def load_to_sqlite(spark_df):
 
